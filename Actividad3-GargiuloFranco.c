@@ -27,12 +27,14 @@ void main()
   }
   else
   {
+    
     while (count <= sqrt(num) && aux != 0)
     {
       // verifico que el num evaluado no tenga resto exacto al dividirse por un contador que se incrementa de a 2, y que el contador sea menor que la raiz de num
       aux = num % count;
       count = count + 2;
     }
+
     if (aux == 0)
     {
       // si luego del loop aux vale 0, significa que num no era primo
