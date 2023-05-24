@@ -8,22 +8,23 @@
 
 // Lexico
 
-struct TCarta // declaro Tcarta
+struct TCarta // declaro TCarta
 {
   int num;
   char palo[10];
 };
+
 // creo cada instancia de TCarta que necesito
 struct TCarta car1;
 struct TCarta car2;
 struct TCarta car3;
 
-// REVISAR
-int coincidencias;
+// variables
+int puntos_envido;
 int compare1_2;
 int compare2_3;
 int compare1_3;
-int puntos_envido;
+int coincidencias;
 
 // perfiles
 int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10]);
