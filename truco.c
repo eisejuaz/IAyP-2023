@@ -33,20 +33,34 @@ int puntosTresCartas(int num1, int num2, int num3);
 
 void main()
 {
-
   // carta 1
-  printf("\nPor favor, ingrese la primera carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
+  printf("\nHola! Jugaremos al truco con cartas espaniolas, y sin usar los 10.\n\nPor favor, ingrese la PRIMERA carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
   scanf("%d", &car1.num);
+  while (car1.num < 1 || car1.num > 12 || (car1.num >= 8 && car1.num <= 10)) // valido carta
+  {
+    printf("\nRecuerda, jugaremos al truco con cartas espaniolas, y sin usar los 10.\nPor favor, ingrese la PRIMERA carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
+    scanf("%d", &car1.num);
+  }
   scanf("%s", car1.palo);
 
   // carta 2
-  printf("\nPor favor, ingrese la segunda carta:\n\n");
+  printf("\nHola! Jugaremos al truco con cartas espaniolas, y sin usar los 10.\n\nPor favor, ingrese la SEGUNDA carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
   scanf("%d", &car2.num);
+  while (car2.num < 1 || car2.num > 12 || (car2.num >= 8 && car2.num <= 10)) // valido carta
+  {
+    printf("\n\nRecuerda, jugaremos al truco con cartas espaniolas, y sin usar los 10.\nPor favor, ingrese la SEGUNDA carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
+    scanf("%d", &car2.num);
+  }
   scanf("%s", car2.palo);
 
   // carta 3
-  printf("\nPor favor, ingrese la tercera carta:\n\n");
+  printf("\nHola! Jugaremos al truco con cartas espaniolas, y sin usar los 10.\n\nPor favor, ingrese la TERCERA carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
   scanf("%d", &car3.num);
+  while (car3.num < 1 || car3.num > 12 || (car3.num >= 8 && car3.num <= 10)) // valido carta
+  {
+    printf("\n\nRecuerda, jugaremos al truco con cartas espaniolas, y sin usar los 10.\nPor favor, ingrese la TERCERA carta indicando primero el numero, luego el palo. Las opciones son: \n\n1) oro\n2) copa\n3) espada\n4) basto \n\n");
+    scanf("%d", &car3.num);
+  }
   scanf("%s", car3.palo);
 
   puntos_envido = 0;
@@ -104,7 +118,7 @@ int puntosCarta(int num)
   return puntos;
 };
 
-int puntosDosCartas(int num1, int num2, int num3) // recibira las variables compare* para saber cuales 2 cartas sumar
+int puntosDosCartas(int num1, int num2, int num3) // recibira las variables compare*_* para saber cuales 2 cartas sumar
 {
   int puntos;
   puntos = 20;
