@@ -30,6 +30,7 @@ int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10]);
 int puntosCarta(int num);
 int puntosDosCartas(int num1, int num2, int num3);
 int puntosTresCartas(int num1, int num2, int num3);
+int puntosSinPuntos(int num1, int num2);
 
 void main()
 {
@@ -70,7 +71,6 @@ void main()
   compare1_3 = strcmp(car1.palo, car3.palo);
 
   coincidencias = contarCoincidencias(car1.palo, car2.palo, car3.palo);
-  printf("\nTenemos %d coincidencias.\n", coincidencias);
 
   if (coincidencias == 2)
   {
@@ -80,6 +80,10 @@ void main()
   {
     puntos_envido = puntosTresCartas(puntosCarta(car1.num), puntosCarta(car2.num), puntosCarta(car3.num));
   }
+  else
+  {
+    puntos_envido = puntosSinPuntos(puntosSinPuntos(puntosCarta(car1.num), puntosCarta(car2.num)), puntosCarta(car3.num));
+  };
 
   printf("\nLos puntos son: %d\n", puntos_envido);
 }
@@ -90,11 +94,11 @@ int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10])
   int count;
   count = 0;
 
-  if ((compare1_2 == 0) && (compare2_3 == 0))
+  if ((compare1_2 == 0) && (compare2_3 == 0)) // caso todas del mismo palo
   {
     count = 3;
   }
-  else if ((compare1_2 == 0 && compare1_3 != 0) || (compare1_3 == 0 && compare1_2 != 0) || (compare1_2 != 0 && compare2_3 == 0))
+  else if ((compare1_2 == 0 && compare1_3 != 0) || (compare1_3 == 0 && compare1_2 != 0) || (compare1_2 != 0 && compare2_3 == 0)) // caso con 2 con mismo palo
   {
     count = 2;
   };
@@ -106,11 +110,11 @@ int puntosCarta(int num)
 {
   int puntos;
 
-  if (num <= 7)
+  if (num <= 7) // mantengo numero hasta el 7
   {
     puntos = num;
   }
-  else
+  else // asigno 0 al 11 y 12
   {
     puntos = 0;
   };
@@ -183,4 +187,21 @@ int puntosTresCartas(int num1, int num2, int num3) // recibira los los puntosCar
   puntos = puntos + parcial1 + parcial2;
 
   return puntos;
+}
+
+int puntosSinPuntos(int num1, int num2)
+{
+  int cartaMayorPuntos;
+  cartaMayorPuntos = 0;
+
+  if (num1 > num2)
+  {
+    cartaMayorPuntos = num1;
+  }
+  else
+  {
+    cartaMayorPuntos = num2;
+  }
+
+  return cartaMayorPuntos;
 }
