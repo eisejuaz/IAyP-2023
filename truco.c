@@ -20,9 +20,15 @@ struct TCarta car3;
 
 // REVISAR
 int coincidencias;
+int compare1_2;
+int compare2_3;
+int compare1_3;
+int puntos_envido;
 
 // perfiles
 int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10]);
+int puntosQueSumaUnaCarta(int num);
+int puntosDosCartas(int num1, int num2, int num3);
 
 void main()
 {
@@ -42,21 +48,22 @@ void main()
   scanf("%d", &car3.num);
   scanf("%s", car3.palo);
 
-  // printf("El palo de la primera cartas es: %s\n", car1.palo);
-  // printf("El palo de la segunda cartas es: %s\n", car2.palo);
-  // printf("El palo de la tercera cartas es: %s\n", car3.palo);
+  puntos_envido = 0;
 
-  // coincidencias = strcmp(car1.palo, car2.palo);
-  // printf("tenemos %d coincidencias", coincidencias);
+  compare1_2 = strcmp(car1.palo, car2.palo);
+  compare2_3 = strcmp(car2.palo, car3.palo);
+  compare1_3 = strcmp(car1.palo, car3.palo);
+
   coincidencias = contarCoincidencias(car1.palo, car2.palo, car3.palo);
   printf("\nTenemos %d coincidencias.\n", coincidencias);
 
-  // printf("El numero de la primera cartas es: %d\n", car1.num);
-  // printf("El palo de la primera cartas es: %s\n", car1.palo);
-  // printf("El numero de la primera cartas es: %d\n", car2.num);
-  // printf("El palo de la primera cartas es: %s\n", car2.palo);
-  // printf("El numero de la primera cartas es: %d\n", car3.num);
-  // printf("El palo de la primera cartas es: %s\n", car3.palo);
+  if (coincidencias == 2)
+  {
+    puntos_envido = puntosDosCartas(compare1_2, compare2_3, compare1_3);
+  } 
+  
+  printf("\nLos puntos son: %d", puntos_envido);
+
 }
 
 // implementaciones
@@ -65,21 +72,48 @@ int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10])
   int count;
   count = 0;
 
-  int compare1_2;
-  int compare2_3;
-  int compare1_3;
-
-  compare1_2 = strcmp(palo1, palo2);
-  compare2_3 = strcmp(palo2, palo3);
-  compare1_3 = strcmp(palo1, palo3);
-
   if ((compare1_2 == 0) && (compare2_3 == 0))
   {
     count = 3;
   }
-  else if ((compare1_2 == 0 && compare1_3 != 0) || (compare1_3 == 0 && compare1_2!= 0) || (compare1_2 != 0 && compare2_3 == 0))
+  else if ((compare1_2 == 0 && compare1_3 != 0) || (compare1_3 == 0 && compare1_2 != 0) || (compare1_2 != 0 && compare2_3 == 0))
   {
     count = 2;
-  }
+  };
   return count;
+};
+
+int puntosQueSumaUnaCarta(int num)
+{
+  int puntos;
+
+  if (num <= 7)
+  {
+    puntos = num;
+  }
+  else
+  {
+    puntos = 0;
+  };
+
+  return puntos;
+};
+
+int puntosDosCartas(int num1, int num2, int num3)
+{
+  int puntosEnvido;
+  puntosEnvido = 20;
+
+  if (num1 == 0) // caso que car1 y car2 sean del mismo palo
+  {
+    puntosEnvido = puntosEnvido + puntosQueSumaUnaCarta(car1.num) + puntosQueSumaUnaCarta(car2.num);
+  }
+  else if (num2 == 0) // caso que car2 y car3 sean del mismo palo
+  {
+    puntosEnvido = puntosEnvido + puntosQueSumaUnaCarta(car2.num) + puntosQueSumaUnaCarta(car3.num);
+  }
+  else if (num3 == 0) // caso que car1 y car3 sean del mismo palo
+  {
+    puntosEnvido = puntosEnvido + puntosQueSumaUnaCarta(car1.num) + puntosQueSumaUnaCarta(car3.num);
+  };
 };
