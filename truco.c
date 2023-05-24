@@ -77,9 +77,9 @@ int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10])
   {
     count = 3;
   }
-  // else if ((palo1 == palo2 && palo1 != palo3) || (palo1 == palo3 && palo1 != palo2) || (palo1 != palo2 && palo2 == palo3))
-  // {
-  //   count = 2;
-  // }
+  else if ((compare1_2 == 0 && compare1_3 != 0) || (compare1_3 == 0 && compare1_2!= 0) || (compare1_2 != 0 && compare2_3 == 0))
+  {
+    count = 2;
+  }
   return count;
 };
