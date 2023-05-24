@@ -27,8 +27,9 @@ int puntos_envido;
 
 // perfiles
 int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10]);
-int puntosQueSumaUnaCarta(int num);
+int puntosCarta(int num);
 int puntosDosCartas(int num1, int num2, int num3);
+int puntosTresCartas(int num1, int num2, int num3);
 
 void main()
 {
@@ -60,10 +61,13 @@ void main()
   if (coincidencias == 2)
   {
     puntos_envido = puntosDosCartas(compare1_2, compare2_3, compare1_3);
-  } 
-  
-  printf("\nLos puntos son: %d", puntos_envido);
+  }
+  else if (coincidencias == 3)
+  {
+    puntos_envido = puntosTresCartas(puntosCarta(car1.num), puntosCarta(car2.num), puntosCarta(car3.num));
+  }
 
+  printf("\nLos puntos son: %d\n", puntos_envido);
 }
 
 // implementaciones
@@ -80,10 +84,11 @@ int contarCoincidencias(char palo1[10], char palo2[10], char palo3[10])
   {
     count = 2;
   };
+
   return count;
 };
 
-int puntosQueSumaUnaCarta(int num)
+int puntosCarta(int num)
 {
   int puntos;
 
@@ -99,21 +104,69 @@ int puntosQueSumaUnaCarta(int num)
   return puntos;
 };
 
-int puntosDosCartas(int num1, int num2, int num3)
+int puntosDosCartas(int num1, int num2, int num3) // recibira las variables compare* para saber cuales 2 cartas sumar
 {
-  int puntosEnvido;
-  puntosEnvido = 20;
+  int puntos;
+  puntos = 20;
 
   if (num1 == 0) // caso que car1 y car2 sean del mismo palo
   {
-    puntosEnvido = puntosEnvido + puntosQueSumaUnaCarta(car1.num) + puntosQueSumaUnaCarta(car2.num);
+    puntos = puntos + puntosCarta(car1.num) + puntosCarta(car2.num);
   }
   else if (num2 == 0) // caso que car2 y car3 sean del mismo palo
   {
-    puntosEnvido = puntosEnvido + puntosQueSumaUnaCarta(car2.num) + puntosQueSumaUnaCarta(car3.num);
+    puntos = puntos + puntosCarta(car2.num) + puntosCarta(car3.num);
   }
   else if (num3 == 0) // caso que car1 y car3 sean del mismo palo
   {
-    puntosEnvido = puntosEnvido + puntosQueSumaUnaCarta(car1.num) + puntosQueSumaUnaCarta(car3.num);
+    puntos = puntos + puntosCarta(car1.num) + puntosCarta(car3.num);
   };
+
+  return puntos;
 };
+
+int puntosTresCartas(int num1, int num2, int num3) // recibira los los puntosCarta de cada carta
+{
+  int puntos;
+  int parcial1;
+  int parcial2;
+
+  puntos = 20;
+  parcial1 = 0;
+  parcial2 = 0;
+
+  if (num3 < num2 && num3 < num1) // caso ++-
+  {
+    parcial1 = num1;
+    parcial2 = num2;
+  }
+  else if (num2 < num3 && num2 < num1) // caso +-+
+  {
+    parcial1 = num1;
+    parcial2 = num3;
+  }
+  else if (num1 < num2 && num1 < num3) // caso -++
+  {
+    parcial1 = num2;
+    parcial2 = num3;
+  }
+  else if (num1 > num2 && num2 == num3) // los siguientes son los casos de tipo 7,11 y 12 del mismo palo, donde las figuras suman 0 y da igual cual de las dos se elija
+  {
+    parcial1 = num1;
+    parcial2 = num2;
+  }
+  else if (num2 > num1 && num1 == num3)
+  {
+    parcial1 = num1;
+    parcial2 = num2;
+  }
+  else if (num3 > num1 && num1 == num2)
+  {
+    parcial1 = num3;
+    parcial2 = num2;
+  };
+
+  puntos = puntos + parcial1 + parcial2;
+
+  return puntos;
+}
