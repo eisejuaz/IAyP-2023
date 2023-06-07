@@ -20,23 +20,13 @@ TCortina cortina3;
 float precioFinal; // variable para el precio
 
 // perfiles
+void CargarCortinas(TCortina *c1, TCortina *c2, TCortina *c3);
 void Oferta(TCortina c1, TCortina c2, TCortina c3, float *precio);
 
 // main
 void main()
 {
-  printf("\nPor favor, ingrese una cortina, primero la tela, segundo el precio.\n");
-  scanf("%s", cortina1.tela);
-  scanf("%f", &cortina1.precio);
-
-  printf("\nPor favor, ingrese la segunda cortina, primero la tela, segundo el precio.\n");
-  scanf("%s", cortina2.tela);
-  scanf("%f", &cortina2.precio);
-
-  printf("\nPor favor, ingrese la tercera cortina, primero la tela, segundo el precio.\n");
-  scanf("%s", cortina3.tela);
-  scanf("%f", &cortina3.precio);
-
+  CargarCortinas(&cortina1,&cortina2,&cortina3);
   Oferta(cortina1, cortina2, cortina3, &precioFinal);
 }
 
@@ -55,4 +45,18 @@ void Oferta(TCortina c1, TCortina c2, TCortina c3, float *precio)
     *precio = c1.precio + c2.precio + c3.precio;
     printf("El precio final es: %.2f", *precio);
   }
+};
+
+void CargarCortinas(TCortina *c1, TCortina *c2, TCortina *c3){
+  printf("\nPor favor, ingrese una cortina, primero la tela, segundo el precio.\n");
+  scanf("%s", cortina1.tela);
+  scanf("%f", &cortina1.precio);
+
+  printf("\nPor favor, ingrese la segunda cortina, primero la tela, segundo el precio.\n");
+  scanf("%s", cortina2.tela);
+  scanf("%f", &cortina2.precio);
+
+  printf("\nPor favor, ingrese la tercera cortina, primero la tela, segundo el precio.\n");
+  scanf("%s", cortina3.tela);
+  scanf("%f", &cortina3.precio);
 };
