@@ -88,7 +88,11 @@ int main()
 
 // para responder por qué el segundo Swap devuelve cero agregué algunos "logs" que me permitan entender mejor qué es lo que está ocurriendo dentro de la acción una vez compilada y ejecutando una pasada.
 
-// al invocar Swap(&a, &a) podemos ver que fue "pisando" en el mismo lugar al pasar dos veces a. la primera asignación equivale a hacer a = a + a, pero ya en la segunda equivale a a = a - a y se convierte en cero, en lugar de restar el segundo valor al primero actualizado, como ocurre cuando pasamos variables diferentes. la tercera, que otra vez hace a = a - a equivale a 0 = 0 - 0, y por eso imprime cero. el segundo Swap siempre devolverá cero.
+// al invocar Swap(&a, &a) podemos ver que estamos usando la misma dirección de memoria para los dos parámetros.
+// la primera asignación equivale a hacer a = a + a.
+// la segunda equivale a a = a - a y se convierte en cero, en lugar de restar el segundo valor al primero actualizado, como ocurre cuando pasamos variables diferentes.
+// la tercera, que otra vez hace a = a - a equivale a 0 = 0 - 0, y por eso imprime cero.
+// el segundo Swap devolverá cero siempre que se le pasen dos direcciones de memoria iguales.
 
 // caso 1:
 // ingreso a = 2
