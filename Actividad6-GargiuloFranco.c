@@ -17,9 +17,8 @@ typedef struct
 
 TData ordenado;
 
-void InsertarNumero(TData arr);
-
 // Perfiles
+void InsertarNumero(TData arr);
 
 int main()
 {
