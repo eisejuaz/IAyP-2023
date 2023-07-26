@@ -8,8 +8,8 @@
 
 // Lexico
 
-#define Fil 3 // pongo como máximo 20 elementos en el arreglo a
-#define Col 4 // pongo como máximo 35 elementos en el arreglo b
+#define Fil 4 // pongo como máximo 20 elementos en el arreglo a
+#define Col 6 // pongo como máximo 35 elementos en el arreglo b
 
 typedef struct {
   int a[Fil][Col];
@@ -36,19 +36,31 @@ int main() {
   bidimensional.a[0][1] = 4;
   bidimensional.a[0][2] = 2;
   bidimensional.a[0][3] = 9;
+  bidimensional.a[0][4] = 1;
+  bidimensional.a[0][5] = 6;
 
   bidimensional.a[1][0] = 2;
   bidimensional.a[1][1] = 6;
   bidimensional.a[1][2] = 8;
   bidimensional.a[1][3] = 6;
+  bidimensional.a[1][4] = 9;
+  bidimensional.a[1][5] = 2;
 
   bidimensional.a[2][0] = 2;
   bidimensional.a[2][1] = 6;
   bidimensional.a[2][2] = 3;
   bidimensional.a[2][3] = 7;
+  bidimensional.a[2][4] = 3;
+  bidimensional.a[2][5] = 1;
   
-  bidimensional.cantFila = 3;
-  bidimensional.cantColumna = 4;
+  bidimensional.a[3][0] = 2;
+  bidimensional.a[3][1] = 6;
+  bidimensional.a[3][2] = 3;
+  bidimensional.a[3][3] = 7;
+  bidimensional.a[3][4] = 6;
+  bidimensional.a[3][5] = 9;
+  
+  bidimensional.cantFila = 4;
 
   // solicito el valor a buscar
   printf("\nIngrese un numero entero positivo, por favor: ");
@@ -84,14 +96,14 @@ bool ContieneNum(TData arr, int num) {
       }      
     }
   }  
-  return aux >=3; // devuelvo un boolean con la comparacion si aux llego o supero 3
+  return aux > 3; // devuelvo un boolean con la comparacion si aux llego o supero 3
 };
 
 void Resultado(bool res) {
   // muestro por pantalla si mi resultado es 1 (true) o 0 (false)
   if (res == 1) {
-    printf("\n\nEl numero se encuentra 3 o mas veces!");
+    printf("\n\nEl numero se encuentra mas de 3!");
   } else {
-    printf("\n\nEl numero se encontro menos de 3 veces.");
+    printf("\n\nEl numero se encontro 3 veces o menos.");
   }  
 };
