@@ -83,15 +83,23 @@ void NombreDoc(TData fullArr, int dni) {
   char mje[50]; //mensaje de salida
   char persona[50]; // apellido encontrado
   
-  strcpy(mje,"\nNo se ha encontrado el dni.\n");
+  i = 0;
+
+  strcpy(mje,"No se ha encontrado el dni.");
 
   while (i <= Max || dni != fullArr.arr[i].dni) {
+
     if (dni == fullArr.arr[i].dni) {
-      strcpy(mje,"\nDNI encontrado!");
+      strcpy(mje,"\nDNI encontrado! ");
       strcpy(persona,fullArr.arr[i].ape);
-      printf("\n La persona es %s.\n",persona);
+      strcat(mje,persona);
+      printf("%s",mje);
     };
 
+    i++;
+
   };
+
+  printf("%s",mje);
 
 };
