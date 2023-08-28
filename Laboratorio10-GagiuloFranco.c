@@ -19,7 +19,7 @@ int main () {
 
     q -> info = 14;
 
-    q -> next = null;
+    q -> next = NULL;
 
     s = (TNodo * ) malloc (sizeof(TNodo));
 
@@ -37,7 +37,7 @@ int main () {
 
     q = s;
 
-    s = null;
+    s = NULL;
 
     s = (TNodo * ) malloc (sizeof(TNodo));
 
@@ -47,7 +47,32 @@ int main () {
 
     q = s;
 
-    s = null;    
+    s = NULL;
+    
+    r = q;
+    
+    r = r -> next;
+    
+    t = r -> next;
+    
+    s = (TNodo * ) malloc (sizeof(TNodo));
+    
+    s -> info = 3;
+    
+    s -> next = r -> next;
+    
+    r -> next = s;
+    
+    p = t;
+    
+    t -> info = 29;
+    
+    printf("\n %d \n", t -> info);
+    
+    while (r != NULL) {
+      printf("\n %d\n", r -> info);
+      r = r -> next;
+    }
 
     return 0;
 }
