@@ -20,6 +20,7 @@ int main () {
     q -> info = 14;
 
     q -> next = NULL;
+    
 
     s = (TNodo * ) malloc (sizeof(TNodo));
 
@@ -27,7 +28,8 @@ int main () {
 
     s -> next = q;
 
-    s = q;
+    q = s;
+    
 
     s = (TNodo * ) malloc (sizeof(TNodo));
 
@@ -68,6 +70,8 @@ int main () {
     t -> info = 29;
     
     printf("\n %d \n", t -> info);
+    
+    r = q;
     
     while (r != NULL) {
       printf("\n %d\n", r -> info);
