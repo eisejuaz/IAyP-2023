@@ -8,8 +8,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-prueba
-
 typedef struct {
   char nom[25];
   char ape[50];
