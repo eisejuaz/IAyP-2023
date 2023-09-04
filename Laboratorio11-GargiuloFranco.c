@@ -46,16 +46,22 @@ int main () {
 
     MostrarLista(r);
 
+    // creo a Tito y lo enlazo
     q = (TNodo * ) malloc (sizeof(TNodo));
-
     strcpy(q -> info, "Tito");
-
     q -> next = r -> next;
-
     q -> back = r;
-
     r -> next = q;
     
+    MostrarLista(r);
+
+    // remplazo la ultima parte de la pregunta
+    s = p -> back;
+    strcpy(s -> info, "estas?");
+    s -> next = NULL;
+    s -> back = p -> back -> back;
+    p = s;
+
     MostrarLista(r);
 
     return 0;
@@ -71,7 +77,3 @@ void MostrarLista (TNodo * list) {
     }
     printf("\n");
 };
-
-//void MostrarLista (TNodo * list) {
-
-//};
