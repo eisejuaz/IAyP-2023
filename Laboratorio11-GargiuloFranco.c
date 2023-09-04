@@ -40,7 +40,7 @@ int main () {
     // creo otro y los enlazo
     r = (TNodo * ) malloc (sizeof(TNodo));
     s -> back = s;
-    strcpy(r -> info, "Hola");
+    strcpy(r -> info, "Hola,");
     r -> next = s;
     r -> back = NULL;
 
@@ -48,7 +48,7 @@ int main () {
 
     // creo a Tito y lo enlazo
     q = (TNodo * ) malloc (sizeof(TNodo));
-    strcpy(q -> info, "Tito");
+    strcpy(q -> info, "Tito,");
     q -> next = r -> next;
     q -> back = r;
     r -> next = q;
