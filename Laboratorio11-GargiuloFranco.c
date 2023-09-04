@@ -8,12 +8,12 @@
 #include <string.h>
 
 typedef struct nodo {
-    int info;
+    char info[10];
     struct nodo * next;
     struct nodo * back;
 } TNodo;
 
-TNodo *p, *r, *r, *t;
+TNodo *p, *r, *s, *t;
 
 void MostrarLista(TNodo * list);
 
@@ -22,7 +22,7 @@ int main () {
     // cargo el ultimo nodo, que queda apuntando a null en su next
     p = (TNodo * ) malloc (sizeof(TNodo));
 
-    p -> info = "va?";
+    strcpy(p -> info, "va?");
 
     p -> next = NULL;
 
@@ -30,10 +30,10 @@ int main () {
 
     // creo otro y los enlazo
     t = (TNodo * ) malloc (sizeof(TNodo));
-
+    
     p -> back = t;
 
-    t -> info = "te";
+    strcpy(t -> info, "te");
 
     t -> next = p;
 
@@ -42,7 +42,7 @@ int main () {
 
     t -> back = t;
     
-    s -> info = "como";
+    strcpy(s -> info, "como");
 
     s -> next = t;
 
@@ -51,13 +51,13 @@ int main () {
 
     s -> back = s;
 
-    r -> info = "Hola";
+    strcpy(r -> info, "Hola");
 
     r -> next = s;
 
     r -> back = NULL;
 
-    MostrarLista(&r);
+    MostrarLista(r);
 
     return 0;
 }
@@ -67,8 +67,9 @@ void MostrarLista (TNodo * list) {
 
     aux = list;
 
-    while(aux -> next != NULL) {
+    while(aux != NULL) {
         printf("%s ",aux -> info);
+        aux = aux -> next;
     }
 };
 
