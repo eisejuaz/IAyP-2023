@@ -74,6 +74,7 @@ void MostrarLista (TNodo * list) {
     while(aux != NULL) {
         printf("%s ",aux -> info);
         aux = aux -> next;
-    }
+    };
+    
     printf("\n");
 };
