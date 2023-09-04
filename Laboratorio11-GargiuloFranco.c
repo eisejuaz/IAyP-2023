@@ -13,7 +13,7 @@ typedef struct nodo {
     struct nodo * back;
 } TNodo;
 
-TNodo *p, *r, *s, *t;
+TNodo *p, *q, *r, *s, *t;
 
 void MostrarLista(TNodo * list);
 
@@ -46,18 +46,30 @@ int main () {
 
     MostrarLista(r);
 
+    q = (TNodo * ) malloc (sizeof(TNodo));
+
+    strcpy(q -> info, "Tito");
+
+    q -> next = r -> next;
+
+    q -> back = r;
+
+    r -> next = q;
+    
+    MostrarLista(r);
+
     return 0;
 }
 
 void MostrarLista (TNodo * list) {
     TNodo *aux;
-
     aux = list;
 
     while(aux != NULL) {
         printf("%s ",aux -> info);
         aux = aux -> next;
     }
+    printf("\n");
 };
 
 //void MostrarLista (TNodo * list) {
