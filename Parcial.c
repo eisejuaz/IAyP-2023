@@ -29,7 +29,8 @@ char msg[50];
 int cant;
 
 // Defino perfiles
-// void MostrarLista(TNodo * list, float number);
+
+void MostrarLista(TNodo * list, float number);
 void Crear(TNodo * pointer);
 void CargarLista(TNodo * list, int num);
 
@@ -41,7 +42,12 @@ int main() {
   printf("%s", msg);
   scanf("%d", &cant);
   CargarLista(q,cant);
-
+  strcpy(msg, "Que monto quiere comparar?\n");
+  printf("%s", msg);
+  scanf("%f", &monto);
+  printf("El monto es %.2f\n", monto);
+  MostrarLista(q,monto);
+  
   return 0;
 }
 
@@ -51,6 +57,7 @@ void MostrarLista(TNodo * list, float number){
   TNodo * aux;
   int count;
   
+  aux = (TNodo *) malloc (sizeof(TNodo));
   count = 0;
   aux = list;
   
@@ -59,7 +66,8 @@ void MostrarLista(TNodo * list, float number){
       count ++;
     };
     aux = aux->next;
-  } 
+  };
+  printf("Tenemos %d montos por arriba\n", count);
 };
 
 void Crear(TNodo * pointer){
@@ -71,7 +79,7 @@ void CargarLista(TNodo * list, int num){
   TDatos bono;
   TNodo * aux;
   int i;
-  
+
   for(i = 1; i <= num; i++) {
     printf("Ingrese un anio\n");
     scanf("%d", &bono.anio);
@@ -79,5 +87,22 @@ void CargarLista(TNodo * list, int num){
     scanf("%f", &bono.monto);
     aux = (TNodo *) malloc (sizeof(TNodo));
     aux->info = bono;
+    
+    if (list != NULL) {
+      aux->next = list;
+      aux->back = NULL;
+      list = aux;
+    } else {
+          printf("estoy aca\n");
+      aux->next = list;
+                printf("estoy aca2\n");
+      aux->back = NULL;
+                printf("estoy aca3\n");
+      list->back = aux;
+                printf("estoy aca4\n");
+      list = aux;
+                printf("estoy aca5\n");
+      printf("pase en segundo\n");
+    }
   }
 };
