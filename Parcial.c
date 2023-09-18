@@ -27,14 +27,14 @@ float monto;
 char msg[50];
 
 // Defino perfiles
-void MostrarLista();
+void MostrarLista(TNodo * list, float number);
 void Crear();
 void CargarLista();
 
 // Programa principal
 int main void() {
   
-  /*Crear(q);
+  Crear(q);
   strcpy(msg, "Cuantos nodos va a agregar?");
   printf("%s", msg);
   scanf("%d", cant);*/
@@ -43,6 +43,16 @@ int main void() {
 }
 
 // Implementaciones
-void MostrarLista();
-void Crear();
-void CargarLista();
+void MostrarLista(TNodo * list, float number){
+  
+  
+};
+
+void Crear(TNodo * pointer){
+  pointer->next = NULL;  
+};
+
+void CargarLista(){
+  
+  
+};
