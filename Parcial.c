@@ -6,6 +6,7 @@
 // Incluyo las librerias
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 // Lexico
 // Defino los structs que necesito, primero el TDatos con un anio y monto, luego el TNodo para la lista con un campo con el registro TNodo y los punteros en ambas direcciones
@@ -14,7 +15,7 @@ typedef struct {
   float monto;
 } TDatos;
 
-typedef struct {
+typedef struct nodo {
   TDatos info;
   struct nodo *next;
   struct nodo *back;
@@ -25,34 +26,58 @@ typedef struct {
 TNodo *q;
 float monto;
 char msg[50];
+int cant;
 
 // Defino perfiles
-void MostrarLista(TNodo * list, float number);
-void Crear();
-void CargarLista();
+// void MostrarLista(TNodo * list, float number);
+void Crear(TNodo * pointer);
+void CargarLista(TNodo * list, int num);
 
 // Programa principal
 int main() {
   
   Crear(q);
-  /* strcpy(msg, "Cuantos nodos va a agregar?");
+  strcpy(msg, "Cuantos nodos va a agregar?\n");
   printf("%s", msg);
-  scanf("%d", cant);
-*/
+  scanf("%d", &cant);
+  CargarLista(q,cant);
+
   return 0;
 }
 
 // Implementaciones
+
 void MostrarLista(TNodo * list, float number){
+  TNodo * aux;
+  int count;
   
+  count = 0;
+  aux = list;
   
+  while(aux != NULL){
+    if (aux->info.monto >= number) {
+      count ++;
+    };
+    aux = aux->next;
+  } 
 };
 
 void Crear(TNodo * pointer){
-  pointer->next = NULL;  
+  pointer = NULL;
 };
 
-void CargarLista(){
+
+void CargarLista(TNodo * list, int num){
+  TDatos bono;
+  TNodo * aux;
+  int i;
   
-  
+  for(i = 1; i <= num; i++) {
+    printf("Ingrese un anio\n");
+    scanf("%d", &bono.anio);
+    printf("Ingrese un monto\n");
+    scanf("%f", &bono.monto);
+    aux = (TNodo *) malloc (sizeof(TNodo));
+    aux->info = bono;
+  }
 };
