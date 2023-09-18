@@ -32,13 +32,13 @@ void Crear();
 void CargarLista();
 
 // Programa principal
-int main void() {
+int main() {
   
   Crear(q);
-  strcpy(msg, "Cuantos nodos va a agregar?");
+  /* strcpy(msg, "Cuantos nodos va a agregar?");
   printf("%s", msg);
-  scanf("%d", cant);*/
-
+  scanf("%d", cant);
+*/
   return 0;
 }
 
