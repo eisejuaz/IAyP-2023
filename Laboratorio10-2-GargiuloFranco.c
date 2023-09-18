@@ -1,62 +1,58 @@
 // Materia: Introducción a la algorítmica y programación
 // Año: 2023
-// Comisión: 4
+// Comisión: 3
 // Alumno: Franco Gargiulo
 
+// Incluyo las librerias
 #include <stdio.h>
-#include <stdbool.h>
 #include <string.h>
-#include <stdlib.h>
+
+// Lexico
+// Defino los structs que necesito, primero el TDatos con un anio y monto, luego el TNodo para la lista con un campo con el registro TNodo y los punteros en ambas direcciones
+typedef struct {
+  int anio;
+  float monto;
+} TDatos;
 
 typedef struct {
-  char nom[25];
-  char ape[50];
-  int dni;
-  int edad;
-} TPersona;
+  TDatos info;
+  struct nodo *next;
+  struct nodo *back;
+} TNodo;
 
-typedef struct nodo {
-  TPersona info;
-  struct nodo * next;  
-} TElem;
+// Defino las variables
 
-TElem *q;
+TNodo *q;
+float monto;
+char msg[50];
 
-bool Vacia(TElem *list);
-void Crear(TElem *list);
-void InsertarCab(TElem *list, TPersona reg);
-void SuprimirCab(TElem *list);
-void Listar(TElem list);
+// Defino perfiles
+void MostrarLista(TNodo * list, float number);
+void Crear();
+void CargarLista();
 
-int main () {
-
-    
-
-    return 0;
+// Programa principal
+int main() {
+  
+  Crear(q);
+  /* strcpy(msg, "Cuantos nodos va a agregar?");
+  printf("%s", msg);
+  scanf("%d", cant);
+*/
+  return 0;
 }
 
-bool Vacia(TElem *list) {
-  return list = NULL;
-};
-
-void Crear(TElem *list) {
-  list = NULL;
-};
-
-void InsertarCab(TElem *list, TPersona reg) {
-  TElem aux;
-  aux = (TNodo * ) malloc (sizeof(TNodo));
-  aux -> info.nom = reg.nom;
-  aux -> info.ape = reg.ape;
-  aux -> info.dni = reg.dni;
-  aux -> info.edad = reg.edad;
+// Implementaciones
+void MostrarLista(TNodo * list, float number){
+  
   
 };
 
-void SuprimirCab(TElem *list) {
-
+void Crear(TNodo * pointer){
+  pointer->next = NULL;  
 };
 
-void Listar(TElem list) {
-
+void CargarLista(){
+  
+  
 };
