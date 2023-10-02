@@ -11,6 +11,7 @@
 int num, resultado;
 char msg[120];
 
+
 // perfiles
 int factorialAumento(int n);
 void FactorialCola(int n, int *res);
