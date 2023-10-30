@@ -27,19 +27,16 @@ int main() {
   scanf("%c",&elementoDado);
   getchar();
   
-  while (!feof(f)) {
-    elementoActual = fgetc(f);
-    printf("\nelementoActual = %c\n",elementoActual);
+  while ((elementoActual=fgetc(f)) != EOF) {
     if (elementoActual == elementoDado) {
       iguales++;
     } else {
       distintos++;
     };
-
   };
   
-  printf("\nCantidad de elementos iguales:  = %d",iguales);
-  printf("\nCantidad de elementos distintos:  = %d\n",distintos);
+  printf("\nCantidad de elementos iguales:  %d",iguales);
+  printf("\nCantidad de elementos distintos:  %d\n",distintos);
   
   fclose(f);
   
@@ -67,7 +64,3 @@ void CargarArchivo(FILE *(*g)){
   
   fclose(*g);
 };
-
-// {}
-
-// []
