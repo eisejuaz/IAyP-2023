@@ -56,6 +56,12 @@ int main() {
         printf("%d,", datos.a[i]);
     };
 
+    BuscarDico(datos, num, &pos); 
+
+    strcpy(msg, "\nLa posicion del numero buscado es: (-1 sino está)");
+
+    printf("%s %d", msg, pos);
+
     return 0;
 }
 
@@ -91,6 +97,24 @@ void BuscarDico(TData d, int e, int *pos) {
 
     if (e < d.a[1] || e > d.a[d.cant]) {
         *pos = 1;
-    };
+    } else
+        if (e > d.a[1] && e >= d.a[d.cant]) {
+            inf = 1;
+            sup = d.cant;
+            while (inf < sup) {
+                k = (inf + sup) / 2;
 
+                if (e > d.a[k]) {
+                    inf = k + 1;
+                } else if (e <= d.a[k]) {
+                    sup = k;
+                };                
+            };
+
+            if (d.a[inf] == e) {
+                *pos = inf;
+            } else {
+                *pos = -1;
+            };        
+    };
 };
