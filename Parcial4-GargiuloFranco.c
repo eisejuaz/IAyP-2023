@@ -25,6 +25,7 @@ char msg[150];
 // perfiles
 void CrearDatos(TData *d);
 void Insercion(TData *d);
+void BuscarDico(TData d, int e, int *pos);
 
 // main function
 int main() {
@@ -39,7 +40,7 @@ int main() {
 
     CrearDatos(&datos);
 
-    for (i = 0; i <=datos.cant -1; i++) {
+    for (i = 0; i <= datos.cant - 1; i++) {
         printf("%d,", datos.a[i]);
     };
 
@@ -49,6 +50,12 @@ int main() {
 
     scanf("%d", &num);
 
+    Insercion(&datos);
+
+    for (i = 0; i <= datos.cant - 1; i++) {
+        printf("%d,", datos.a[i]);
+    };
+
     return 0;
 }
 
@@ -56,28 +63,34 @@ int main() {
 void CrearDatos(TData *d) {
     int i;
 
-    for (i = 0; i < (*d).cant; i++) {
+    for (i = 0; i < d->cant; i++) {
         d->a[i] = rand() % (100 - 1) + 1;
     };
 };
 
+
 void Insercion(TData *d) {
-    int aux, i, j;
-
-    i = 2;
-
-    while (i <= (*d).cant) {
+    int i,j,aux;
+    i = 1;
+    while(i < d->cant) {
         aux = d->a[i];
-        j--;
-
-        while (j > 0 && (*d).a[j] > aux) {
-            (*d).a[j+1] <- (*d).a[j];
-            
+        j=i-1;
+        
+        while(j >= 0 && d->a[j] > aux) {
+            d->a[j+1] = d->a[j];
             j--;
         };
+        
+        d->a[j+1] = aux;
+        i++;
+ };
+};
 
-        (*d).a[j+1] = aux;
-        i++;        
+void BuscarDico(TData d, int e, int *pos) {
+    int k, inf, sup;
+
+    if (e < d.a[1] || e > d.a[d.cant]) {
+        *pos = 1;
     };
-    
+
 };
