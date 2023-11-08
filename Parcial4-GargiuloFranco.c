@@ -40,6 +40,11 @@ int main() {
 
     CrearDatos(&datos);
 
+    for (i = 0; i <=datos.cant; i++)
+    {
+        printf("%d", datos.a[i]);
+    };
+
     return 0;
 }
 
@@ -49,7 +54,6 @@ void CrearDatos(TData *d) {
 
     for (i = 0; i < (*d).cant ; i++) {
         d->a[i] = rand() % (100 - 1) + 1;
-        printf("\nNumero %d es: %d", i+1, d->a[i] );
-    };    
+    };
 };
 
