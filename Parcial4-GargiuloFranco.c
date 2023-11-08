@@ -24,6 +24,7 @@ char msg[150];
 
 // perfiles
 void CrearDatos(TData *d);
+void Insercion(TData *d);
 
 // main function
 int main() {
@@ -36,14 +37,17 @@ int main() {
 
     scanf("%d", &datos.cant);
 
-    printf("\ntengo lista la cant : %d", datos.cant);
-
     CrearDatos(&datos);
 
-    for (i = 0; i <=datos.cant; i++)
-    {
-        printf("%d", datos.a[i]);
+    for (i = 0; i <=datos.cant -1; i++) {
+        printf("%d,", datos.a[i]);
     };
+
+    strcpy(msg, "\nIngrese un numero a buscar: ");
+
+    printf("%s", msg);
+
+    scanf("%d", &num);
 
     return 0;
 }
@@ -52,8 +56,28 @@ int main() {
 void CrearDatos(TData *d) {
     int i;
 
-    for (i = 0; i < (*d).cant ; i++) {
+    for (i = 0; i < (*d).cant; i++) {
         d->a[i] = rand() % (100 - 1) + 1;
     };
 };
 
+void Insercion(TData *d) {
+    int aux, i, j;
+
+    i = 2;
+
+    while (i <= (*d).cant) {
+        aux = d->a[i];
+        j--;
+
+        while (j > 0 && (*d).a[j] > aux) {
+            (*d).a[j+1] <- (*d).a[j];
+            
+            j--;
+        };
+
+        (*d).a[j+1] = aux;
+        i++;        
+    };
+    
+};
